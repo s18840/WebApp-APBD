@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAppPatients.Models;
+using WebAppPatients.Services;
 
 namespace WebAppPatients
 {
@@ -22,6 +25,11 @@ namespace WebAppPatients
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IServiceDb, PatientsDbService>();
+            services.AddDbContext<PersonsDbContext>(options =>
+            {
+                options.UseSqlServer("Data Source=db-mssql;Initial Catalog=s18840;Integrated Security=True");
+            });
             services.AddControllersWithViews();
         }
 
@@ -46,7 +54,7 @@ namespace WebAppPatients
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Patients}/{action=GetPatients}/{id?}");
             });
         }
     }

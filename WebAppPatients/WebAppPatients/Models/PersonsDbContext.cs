@@ -59,6 +59,8 @@ namespace WebAppPatients.Models
             {
                 entity.HasKey(x => new { x.IdMedicament, x.IdPrescription });
 
+                entity.ToTable("Prescription_Medicament");
+
                 entity.HasIndex(x => x.IdPrescription);
 
                 entity.Property(e => e.Details).IsRequired();
