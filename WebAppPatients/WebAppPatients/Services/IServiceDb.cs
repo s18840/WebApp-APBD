@@ -9,8 +9,6 @@ namespace WebAppPatients.Services
     public interface IServiceDb
     {
         public IEnumerable<Patients> GetPatients();
-        //public List<Patients> getPatients();
-        //public Patients GetPatients(int index);
         public DetailsPatient GetPatientDetails(int index);
         public void AddPatient(Patients patient);
         public void RemovePatient(int index);

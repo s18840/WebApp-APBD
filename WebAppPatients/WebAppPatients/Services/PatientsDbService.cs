@@ -16,7 +16,6 @@ namespace WebAppPatients.Services
             _context = context;
         }
 
-
         public IEnumerable<Patients> GetPatients()
         {
             return _context.Patients.ToList();
