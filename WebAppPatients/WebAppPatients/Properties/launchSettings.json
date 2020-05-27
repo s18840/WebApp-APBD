@@ -3,7 +3,7 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:50132",
+      "applicationUrl": "http://localhost:50132/PatientsController.cs",
       "sslPort": 0
     }
   },
