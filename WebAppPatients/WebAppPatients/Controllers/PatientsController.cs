@@ -19,7 +19,7 @@ namespace WebAppPatients.Controllers
 
         public IActionResult GetPatients()
         {
-            return View(_service.GetPatients());
+            return View (_service.GetPatients());
         }
 
         public IActionResult GetPatientDetails(int index)
