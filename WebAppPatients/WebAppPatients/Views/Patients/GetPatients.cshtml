@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebAppPatients.Models.Patients>
+
+<h3>Lista Pacjentów</h3>
+
+<p>
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.FirstName)</th>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.LastName)</th>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.Birthdate)</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patient in Model)
+            {
+                <tr>
+                    <td>@patient.FirstName</td>
+                    <td>@patient.LastName</td>
+                    <td>@patient.Birthdate</td>
+                    <td class="buttonTd">
+                        @Html.ActionLink("Detale pacjenta", "GetPatientDetails", "Patients", new { index = patient.IdPatient }, new { @class = "homeBtn" })
+                        <br />
+                        @Html.ActionLink("Usuń pacjenta", "RemovePatient", "Patients", new { index = patient.IdPatient }, new { @class = "homeBtn" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h3>Dodawanie Pacjenta</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.FirstName)</th>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.LastName)</th>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.Birthdate)</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Dodaj pacjenta", "AddPatient", "Patients", new { }, new { @class = "homeBtn" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+</p>

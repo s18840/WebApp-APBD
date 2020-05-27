@@ -1,0 +1,54 @@
+﻿@model WebAppPatients.Models.DetailsPatient
+
+<h3>Dane Pacjenta</h3>
+
+<p>
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.Patient.FirstName)</th>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.Patient.LastName)</th>
+                <th>@Html.DisplayNameFor(modelItem => modelItem.Patient.Birthdate)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Patient.FirstName</td>
+                <td>@Model.Patient.LastName</td>
+                <td>@Model.Patient.Birthdate</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Lista recept</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Data wystawienia</th>
+                <th>Data przedawnienia</th>
+                <th>Numer doktora</th>
+                <th>Lista leków</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var presc in Model.Prescriptions)
+            {
+                <tr>
+                    <td>@presc.Date</td>
+                    <td>@presc.DueDate</td>
+                    <td>@presc.IdDoctor</td>
+                    <td>
+                        @foreach (var med in Model.PrescriptionMedicamentsDict[presc])
+                        {
+                            @med.Name
+                            <br />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    @Html.ActionLink("Wróć do listy pacjentów", "GetPatients", "Patients", new { }, new { @class = "homeBtn" })
+
+</p>
